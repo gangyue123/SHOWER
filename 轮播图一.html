@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #big{
+            height: 500px;
+            width: 400px;
+            border: 1px solid yellow;
+            margin: auto;
+        }
+        #inner{
+            height: 400px;
+            width: 1000%;
+            border: 1px solid rgb(98, 0, 255);
+            margin: auto;
+        }
+        #top{
+            height: 400px;
+            width: 400px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        #button{
+            height: 30px;
+            width: 130px;
+            /* border: 1px solid green; */
+            margin-top:10px;
+            margin-left: 140px;
+        }
+        #button ul li {
+            list-style: none;
+            float: left;
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid black;
+
+        }
+        .select{
+            background-color: red;
+        }
+        .li2 {
+            border-left: none !important;
+            border-right: none !important;
+        }
+        .li3{
+            border-right: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="big">
+        <div id="top">
+            <div id="inner">
+                <img src="images/one.jfif" alt="">
+                <img src="images/two.jpeg" alt="">
+                <img src="images/three.jfif" alt="">
+                <img src="images/four.jpeg" alt="">
+            </div>
+
+        </div>
+        <div id="button">
+            <ul>
+                <li class="select">1</li>
+                <li class="li2">2</li>
+                <li class="li3">3</li>
+                <li>4</li>
+            </ul> 
+        </div>
+    </div>    
+</body>
+<script>
+    var num=0;
+   
+    
+     
+    //页面加载完成后执行
+    window.onload = function(){
+        var photo =document.getElementById("inner").getElementsByTagName("img");
+        
+      
+        clock();
+       
+        
+    }
+    function clock(){
+        var top =document.getElementById("top");
+     //设置一个定时器每隔2秒换一个图片
+     setInterval(function(){
+
+           num++;
+           if(num==4){
+               num=0;
+           }
+        // top.scrollLeft = 400*num;
+            
+           move(top.scrollLeft,400*num);
+           buts();
+           
+           
+       },2000)
+        
+    }       
+    function move(start,end){
+        var top =document.getElementById("top");
+        //初始步数是0
+        var step =0;
+        //最大步数是10
+        var maxStep =10;
+        var everyStep = (end-start)/maxStep;
+       
+        var time =setInterval(function(){
+            step++;
+            top.scrollLeft=top.scrollLeft+everyStep;
+            if(step==maxStep){
+                clearInterval(time);
+            }
+        },50)
+    }
+    function buts(){
+        var btns=document.getElementById("button").getElementsByTagName("li");
+        for(var i=0;i<btns.length;i++){
+            console.log(i);
+            btns[i].style.background="#ffffff";
+
+        }
+        btns[num].style.background ="red";
+    }
+    
+</script>
+</html>
