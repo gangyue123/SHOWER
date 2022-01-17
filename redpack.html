@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>第一个红包</p>
+        <p>第二个红包</p>
+        <p>第三个红包</p>
+
+    </div>
+</body>
+<script>
+     var sum=1000;
+     var one=1;
+     var two =1;
+     var three =1;
+    
+     one +=Math.floor(Math.random()*(9.97-0)+0);
+    var left=9.99-one;
+    two+=Math.floor(Math.random()*(left-0)+0);
+    left-=two;
+    if(left<=0){
+        left=0;
+    }
+         
+    
+   
+    three+=left;
+   
+    console.log(one);
+    console.log(two);
+    console.log(Math.floor(three));
+
+</script>
+</html>
